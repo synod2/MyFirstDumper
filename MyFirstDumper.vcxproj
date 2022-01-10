@@ -142,7 +142,6 @@
     <ClCompile Include="dumper.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="dumper.h" />
     <ClInclude Include="memory.h" />
     <ClInclude Include="Structure.h" />
   </ItemGroup>

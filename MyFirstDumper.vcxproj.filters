@@ -23,9 +23,6 @@
     <ClInclude Include="memory.h">
       <Filter>소스 파일</Filter>
     </ClInclude>
-    <ClInclude Include="dumper.h">
-      <Filter>소스 파일</Filter>
-    </ClInclude>
     <ClInclude Include="Structure.h">
       <Filter>소스 파일</Filter>
     </ClInclude>
