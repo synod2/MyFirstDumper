@@ -55,8 +55,72 @@ struct UStruct {
 	DWORD_PTR* UnversionedSchema;					//0xA0
 };
 
+struct AActor {
+	UObjectBase	baseclass;							//0x00000000
+	DWORD_PTR* PrimaryActorTick[6];					//0x00000028
+	BYTE	UpdateOverlapsMethodDuringLevelStreaming;//0x0000005D
+	BYTE	DefaultUpdateOverlapsMethodDuringLevelStreaming;//0x0000005E
+	BYTE	RemoteRole;//0x0000005F
+	DWORD32	ReplicatedMovement[13];//0x00000060
+	DWORD32	InitialLifeSpan;//0x00000094
+	DWORD32	CustomTimeDilation;//0x00000098
+	DWORD32	CreationTime;//0x0000009C
+	DWORD_PTR* AttachmentReplication[5];//0x000000A0
+	DWORD_PTR* Owner;//0x000000E0
+	DWORD_PTR* NetDriverName;//0x000000E8
+	BYTE	Role;//0x000000F0
+	BYTE	NetDormancy;//0x000000F1
+	BYTE	SpawnCollisionHandlingMethod;//0x000000F2
+	BYTE	AutoReceiveInput;//0x000000F3
+	DWORD32	InputPriority;//0x000000F4
+	DWORD64	InputComponent;//0x000000F8
+	DWORD32	NetCullDistanceSquared;//0x00000100
+	DWORD32	NetTag;//0x00000104
+	DWORD32	NetUpdateFrequency;//0x00000108
+	DWORD32	MinNetUpdateFrequency;//0x0000010C
+	DWORD32	NetPriority;//0x00000110
+	DWORD32	LastRenderTime;//0x00000114
+	DWORD64	Instigator;//0x00000118
+	DWORD_PTR* Children[2];//0x00000120
+	DWORD64	RootComponent;//0x00000130
+	DWORD_PTR* ControllingMatineeActors[2];//0x00000138
+	DWORD64	TimerHandle_LifeSpanExpired;//0x00000148
+	DWORD_PTR* Layers[2];//0x00000150
+	DWORD_PTR* ParentComponent;//0x00000160
+	DWORD_PTR* Tags[2];//0x00000170
+	BYTE	OnTakeAnyDamage;//0x00000180
+	BYTE	OnTakePointDamage;//0x00000181
+	BYTE	OnTakeRadialDamage;//0x00000182
+	BYTE	OnActorBeginOverlap;//0x00000183
+	BYTE	OnActorEndOverlap;//0x00000184
+	BYTE	OnBeginCursorOver;//0x00000185
+	BYTE	OnEndCursorOver;//0x00000186
+	BYTE	OnClicked;//0x00000187
+	BYTE	OnReleased;//0x00000188
+	BYTE	OnInputTouchBegin;//0x00000189
+	BYTE	OnInputTouchEnd;//0x0000018A
+	BYTE	OnInputTouchEnter;//0x0000018B
+	BYTE	OnInputTouchLeave;//0x0000018C
+	BYTE	OnActorHit;//0x0000018D
+	BYTE	OnDestroyed;//0x0000018E
+	BYTE	OnEndPlay;//0x0000018F
+	DWORD_PTR* ReplicatedComponents[2];//0x00000190
+	DWORD_PTR* OwnedComponents[2];//0x000001A0
+	DWORD_PTR* InstanceComponents[2];//0x000001F0
+	DWORD_PTR* BlueprintCreatedComponents[2];//0x00000200
+	DWORD_PTR* DetachFence[2];//0x00000210
+};
+
+struct USceneComponent {
+	UObjectBase	baseclass;			//0x00
+	FVector RelativeLocation;		//0x11C
+	FVector RelativeRotation;		//0x128
+	FVector RelativeScale3D;		//0x134
+	FVector ComponentVelocity;		//0x140
+};
+
 struct UWrold {
-	UObjectBase	baseclass_0;						//0x00000000
+	UObjectBase	baseclass;							//0x00000000
 	DWORD_PTR* baseclass_28	;						//0x00000028
 	DWORD64	PersistentLevel;						//0x00000030
 	DWORD64	NetDriver;								//0x00000038
@@ -80,11 +144,6 @@ struct UWrold {
 	BYTE	FeatureLevel;							//0x00000118
 	BYTE	TickGroup;								//0x00000119
 	BYTE	WorldType;								//0x0000011A
-	BYTE	_bf11b;									//0x0000011B
-	BYTE	_bf11c;									//0x0000011C
-	BYTE	_bf11d;									//0x0000011D
-	BYTE	_bf11e;									//0x0000011E
-	BYTE	_bf11f;									//0x0000011F
 	DWORD64	NavigationSystem;						//0x00000120
 	DWORD64	AuthorityGameMode;						//0x00000128
 	DWORD64	GameState;								//0x00000130
@@ -93,10 +152,6 @@ struct UWrold {
 	DWORD_PTR* Levels[2];							//0x00000148
 	DWORD_PTR* LevelCollections[2];					//0x00000158
 	BYTE	ActiveLevelCollectionIndex;				//0x00000168
-	BYTE	_16c;									//0x0000016C
-	BYTE	_16d;									//0x0000016D
-	BYTE	_16E;									//0x0000016E
-	BYTE	_16F;									//0x0000016F
 	DWORD_PTR* AudioDeviceHandle[3];				//0x00000170
 	DWORD64	OwningGameInstance;						//0x00000188
 	DWORD_PTR* ParameterCollectionInstances[2];		//0x00000190
@@ -146,10 +201,6 @@ struct UWrold {
 	BYTE	FlushLevelStreamingType;				//0x00000568
 	BYTE	NextTravelType;							//0x00000569
 	UINT16	NumStreamingLevelsBeingLoaded;			//0x0000056A
-	BYTE	_56c;									//0x0000056C
-	BYTE	_56d;									//0x0000056D
-	BYTE	_56E;									//0x0000056E
-	BYTE	_56F;									//0x0000056F
 	DWORD_PTR* NextURL[2];							//0x00000570
 	DWORD_PTR* PreparingLevelNames[2];				//0x00000580
 	DWORD_PTR* CommittedPersistentLevelName;		//0x00000590
@@ -173,7 +224,7 @@ struct FField {
 };
 
 struct FProperty {
-	FField baseclass_0; 							//0x00
+	FField baseclass; 								//0x00
 	UINT32 ArrayDim; 								//0x38
 	UINT32  ElementSize; 							//0x3C
 	DWORD64 PropertyFlags;  						//0x40
@@ -189,17 +240,18 @@ struct FProperty {
 };
 
 
+//Constructor
+namespace UOArray{
+
 class GUObjectArray {
-private : 
+public:
 	Process* Proc;
 	LPVOID Objects;
 	DWORD64 FUObjectItem;
 	DWORD64 FNamePoolAddr;
 	UINT32 NumElement;
-
-public:
+	GUObjectArray() {};
 	GUObjectArray(Process* Proc, DWORD64 ObjectAddress, DWORD64 FNamePoolAddr);
-	DWORD64 GetNamePrivate(DWORD64 idx);
 	void GetObjBase(DWORD64 idx);
 	void MakeObjArray(UStruct* ObjBase);
 	void GetFName(UStruct* ObjBase);
@@ -207,152 +259,221 @@ public:
 	void MakeName(DWORD64 ID);
 };
 
-
-//Constructor
-GUObjectArray::GUObjectArray(Process* Proc, DWORD64 ObjectAddress, DWORD64 FNamePoolAddr) {
-	this->Objects = (LPVOID)Proc->ReadMemoryByte((LPVOID)(ObjectAddress + 0x10), 8);
-	this->FUObjectItem = (DWORD64)Proc->ReadMemoryByte(Objects, 8);
-	this->NumElement = (UINT32)Proc->ReadMemoryByte((LPVOID)(ObjectAddress + 0x24), 4);
-	this->Proc = Proc;
-	this->FNamePoolAddr = FNamePoolAddr;
-}
-
-//Make UObjectBase Structure
-void GUObjectArray::GetObjBase(DWORD64 idx) {
-	UStruct ObjBase;
-	LPVOID resAddr = (LPVOID)(idx * 0x18 + FUObjectItem);
-	resAddr = (LPVOID)Proc->ReadMemoryByte(resAddr, 8);
-
-	fout << "[0x";
-	fout.fill('0');
-	fout.width(8);
-	fout << hex << idx;
-	fout << "] ";
-
-	ObjBase.baseclass.vfptr = (DWORD_PTR*)Proc->ReadMemoryByte((LPVOID)((DWORD64)resAddr), 8);
-	ObjBase.baseclass.ObjectFlags = Proc->ReadMemoryByte((LPVOID)((DWORD64)resAddr + 0x8), 4);
-	ObjBase.baseclass.Internalindex = Proc->ReadMemoryByte((LPVOID)((DWORD64)resAddr + 0xC), 4);
-	ObjBase.baseclass.ClassPrivate = (UObjectBase*)Proc->ReadMemoryByte((LPVOID)((DWORD64)resAddr + 0x10), 8);
-	ObjBase.baseclass.NamePrivate = Proc->ReadMemoryByte((LPVOID)((DWORD64)resAddr + 0x18), 8);
-	ObjBase.baseclass.OuterPrivate = (UObjectBase*)Proc->ReadMemoryByte((LPVOID)((DWORD64)resAddr + 0x20), 8);
-	if (ObjBase.baseclass.ClassPrivate != 0)
-		ObjBase.baseclass.ClassPrivateidx = Proc->ReadMemoryByte((LPVOID)((DWORD64)ObjBase.baseclass.ClassPrivate + 0x18), 8);
-	else
-		ObjBase.baseclass.ClassPrivateidx = 0;
-	if (ObjBase.baseclass.OuterPrivate != 0)
-		ObjBase.baseclass.OuterPrivateidx = Proc->ReadMemoryByte((LPVOID)((DWORD64)ObjBase.baseclass.OuterPrivate + 0x18), 8);
-	else
-		ObjBase.baseclass.OuterPrivateidx = 0;
-	ObjBase.ChildProperties = (DWORD_PTR*)Proc->ReadMemoryByte((LPVOID)((DWORD64)resAddr + 0x50), 8);
-
-	GetFName(&ObjBase);
-}
-
-//Repeatable Function 
-void GUObjectArray::MakeObjArray(UStruct* ObjBase) {
-	Gcount = NumElement;
-	printf(" GCount : %d", Gcount);
-	for (int i = 0; i != Gcount; i++) {
-		GetObjBase(i);
+	GUObjectArray::GUObjectArray(Process* Proc, DWORD64 ObjectAddress, DWORD64 FNamePoolAddr) {
+		this->Objects = (LPVOID)Proc->ReadMemoryByte((LPVOID)(ObjectAddress + 0x10), 8);
+		this->FUObjectItem = (DWORD64)Proc->ReadMemoryByte(Objects, 8);
+		this->NumElement = (UINT32)Proc->ReadMemoryByte((LPVOID)(ObjectAddress + 0x24), 4);
+		this->Proc = Proc;
+		this->FNamePoolAddr = FNamePoolAddr;
 	}
-}
+
+	//Make UObjectBase Structure
+	void GUObjectArray::GetObjBase(DWORD64 idx) {
+		UStruct ObjBase;
+		LPVOID resAddr = (LPVOID)(idx * 0x18 + FUObjectItem);
+		resAddr = (LPVOID)Proc->ReadMemoryByte(resAddr, 8);
+
+		fout << "[0x";
+		fout.fill('0');
+		fout.width(8);
+		fout << hex << idx;
+		fout << "] ";
+
+		ObjBase.baseclass.vfptr = (DWORD_PTR*)Proc->ReadMemoryByte((LPVOID)((DWORD64)resAddr), 8);
+		ObjBase.baseclass.ObjectFlags = Proc->ReadMemoryByte((LPVOID)((DWORD64)resAddr + 0x8), 4);
+		ObjBase.baseclass.Internalindex = Proc->ReadMemoryByte((LPVOID)((DWORD64)resAddr + 0xC), 4);
+		ObjBase.baseclass.ClassPrivate = (UObjectBase*)Proc->ReadMemoryByte((LPVOID)((DWORD64)resAddr + 0x10), 8);
+		ObjBase.baseclass.NamePrivate = Proc->ReadMemoryByte((LPVOID)((DWORD64)resAddr + 0x18), 8);
+		ObjBase.baseclass.OuterPrivate = (UObjectBase*)Proc->ReadMemoryByte((LPVOID)((DWORD64)resAddr + 0x20), 8);
+		if (ObjBase.baseclass.ClassPrivate != 0)
+			ObjBase.baseclass.ClassPrivateidx = Proc->ReadMemoryByte((LPVOID)((DWORD64)ObjBase.baseclass.ClassPrivate + 0x18), 8);
+		else
+			ObjBase.baseclass.ClassPrivateidx = 0;
+		if (ObjBase.baseclass.OuterPrivate != 0)
+			ObjBase.baseclass.OuterPrivateidx = Proc->ReadMemoryByte((LPVOID)((DWORD64)ObjBase.baseclass.OuterPrivate + 0x18), 8);
+		else
+			ObjBase.baseclass.OuterPrivateidx = 0;
+		ObjBase.ChildProperties = (DWORD_PTR*)Proc->ReadMemoryByte((LPVOID)((DWORD64)resAddr + 0x50), 8);
+
+		GetFName(&ObjBase);
+	}
+
+	//Repeatable Function 
+	void GUObjectArray::MakeObjArray(UStruct* ObjBase) {
+		Gcount = NumElement;
+		printf(" GCount : %d", Gcount);
+		for (int i = 0; i != Gcount; i++) {
+			GetObjBase(i);
+		}
+	}
 
 
-void GUObjectArray::GetFName(UStruct* ObjBase) {
-	DWORD64 ID, Block, Offset, PoolBase, NameAddr, Len = 0;
-	DWORD FNameEntryHeader = 0;
-	bool bisWide = 0;
-	char tmpstr[256] = "";
+	void GUObjectArray::GetFName(UStruct* ObjBase) {
+		DWORD64 ID, Block, Offset, PoolBase, NameAddr, Len = 0;
+		DWORD FNameEntryHeader = 0;
+		bool bisWide = 0;
+		char tmpstr[256] = "";
 
-	//make NamePrivate
-	MakeName(ObjBase->baseclass.ClassPrivateidx);
-	MakeName(ObjBase->baseclass.OuterPrivateidx);
-	MakeName(ObjBase->baseclass.NamePrivate);
-	/*ObjBase->ClassPrivate->NamePrivate;*/
+		//make NamePrivate
+		MakeName(ObjBase->baseclass.ClassPrivateidx);
+		MakeName(ObjBase->baseclass.OuterPrivateidx);
+		MakeName(ObjBase->baseclass.NamePrivate);
+		/*ObjBase->ClassPrivate->NamePrivate;*/
 
-	//Get Offset_Internal
-	fout << endl;
-	if (ObjBase->baseclass.ObjectFlags == 67) {
+		//Get Offset_Internal
+		fout << endl;
+		if (ObjBase->baseclass.ObjectFlags == 67) {
 			
-		if (ObjBase->ChildProperties) {
+			if (ObjBase->ChildProperties) {
 
-			FField* firstEntry = (FField*)ObjBase->ChildProperties;
-			FField* PropertyEntry = firstEntry;
-			int count = 0;
-			//Get All SubPropety Entry 
-			while (PropertyEntry) {
-				UINT32 Offset = Proc->ReadMemoryByte((LPVOID)((DWORD64)PropertyEntry + 0x4C), 4);
-				DWORD64 NameID = Proc->ReadMemoryByte((LPVOID)((DWORD64)PropertyEntry + 0x28), 4);
-				UObjectBase* ClassPrivate = (UObjectBase*)Proc->ReadMemoryByte((LPVOID)((DWORD64)PropertyEntry + 0x8), 8);
-				DWORD64 ClassPrivateidx = Proc->ReadMemoryByte((LPVOID)((DWORD64)ClassPrivate), 8);
+				FField* firstEntry = (FField*)ObjBase->ChildProperties;
+				FField* PropertyEntry = firstEntry;
+				int count = 0;
+				//Get All SubPropety Entry 
+				while (PropertyEntry) {
+					UINT32 Offset = Proc->ReadMemoryByte((LPVOID)((DWORD64)PropertyEntry + 0x4C), 4);
+					DWORD64 NameID = Proc->ReadMemoryByte((LPVOID)((DWORD64)PropertyEntry + 0x28), 4);
+					UObjectBase* ClassPrivate = (UObjectBase*)Proc->ReadMemoryByte((LPVOID)((DWORD64)PropertyEntry + 0x8), 8);
+					DWORD64 ClassPrivateidx = Proc->ReadMemoryByte((LPVOID)((DWORD64)ClassPrivate), 8);
 					
-				MakeName(ClassPrivateidx);
-				MakeName(NameID);
+					MakeName(ClassPrivateidx);
+					MakeName(NameID);
 
-				fout << "\t\t\t\t// Offset : " << setbase(16) << Offset << endl;
-				PropertyEntry = (FField*) Proc->ReadMemoryByte((LPVOID)((DWORD64)PropertyEntry + 0x20), 8);
+					fout << "\t\t\t\t// Offset : " << setbase(16) << Offset << endl;
+					PropertyEntry = (FField*) Proc->ReadMemoryByte((LPVOID)((DWORD64)PropertyEntry + 0x20), 8);
+				}
 			}
 		}
 	}
+
+	void GUObjectArray::MakeName(DWORD64 ID) {
+		DWORD64 Block, Offset, PoolBase, NameAddr, Len = 0;
+		DWORD FNameEntryHeader = 0;
+		bool bisWide = 0;
+
+		if (ID == 0)
+			return;
+
+		Block = ID >> 16;
+		Offset = ID & 65535;
+		PoolBase = FNamePoolAddr + 0x10 + Block * 8;
+		NameAddr = Proc->ReadMemoryByte((LPVOID)PoolBase, 8) + 2 * Offset;
+
+		FNameEntryHeader = Proc->ReadMemoryByte((LPVOID)NameAddr, 2);
+		bisWide = FNameEntryHeader & 1;
+		if (bisWide == 0)
+			Len = FNameEntryHeader >> 6;
+		else
+			Len = (FNameEntryHeader >> 6) * 2;
+		char* tmp = new char[Len + 1]{ '\0', };
+		for (int j = 0; j != Len; j++) {
+			char temp = (BYTE)Proc->ReadMemoryByte((LPVOID)((DWORD64)NameAddr + 2 + j), 1);
+			memcpy(tmp + j, &temp, 1);
+		}
+		/*printf("\t%s",tmp);*/
+		/*fout << "\t\t" << tmp;*/
+		cout << "\t\t" << tmp;
+		delete[] tmp;
+	}
+
+	void GUObjectArray::MakeName(DWORD64 ID, DWORD64 idx, LPWSTR** list) {
+		DWORD64 Block, Offset, PoolBase, NameAddr, Len = 0;
+		DWORD FNameEntryHeader = 0;
+		bool bisWide = 0;
+
+		if (ID == 0)
+			return;
+
+		Block = ID >> 16;
+		Offset = ID & 65535;
+		PoolBase = FNamePoolAddr + 0x10 + Block * 8;
+		NameAddr = Proc->ReadMemoryByte((LPVOID)PoolBase, 8) + 2 * Offset;
+
+		FNameEntryHeader = Proc->ReadMemoryByte((LPVOID)NameAddr, 2);
+		bisWide = FNameEntryHeader & 1;
+		if (bisWide == 0)
+			Len = FNameEntryHeader >> 6;
+		else
+			Len = (FNameEntryHeader >> 6) * 2;
+		list[idx] = new LPWSTR[Len + 1]{ 0, };
+		char* tmp = new char[Len + 1]{ '\0', };
+		for (int j = 0; j != Len; j++) {
+			char temp = (BYTE)Proc->ReadMemoryByte((LPVOID)((DWORD64)NameAddr + 2 + j), 1);
+			memcpy(tmp + j, &temp, 1);
+		}
+		if (tmp == NULL)
+			memcpy(tmp, "", Len + 1);
+		fout << tmp << "\t";
+		memcpy(list[idx], tmp, Len + 1);
+		delete[] tmp;
+	}
 }
 
-void GUObjectArray::MakeName(DWORD64 ID) {
-	DWORD64 Block, Offset, PoolBase, NameAddr, Len = 0;
-	DWORD FNameEntryHeader = 0;
-	bool bisWide = 0;
+namespace AArray {
+	class AActorArray : UOArray::GUObjectArray {
+	private:
+		Process* Proc;
+		DWORD64 ObjectAddress;
+		DWORD64 FNamePoolAddr;
+	public:
+		AActorArray(Process* Proc, DWORD64 ObjectAddress, DWORD64 FNamePoolAddr, PVOID GWorld);
+		PVOID AActors;
+		PVOID GetAActors(PVOID GWorld);
+		PVOID GetActorNameList(PVOID AActors,INT64 idx);		
+	};
 
-	if (ID == 0)
-		return;
 
-	Block = ID >> 16;
-	Offset = ID & 65535;
-	PoolBase = FNamePoolAddr + 0x10 + Block * 8;
-	NameAddr = Proc->ReadMemoryByte((LPVOID)PoolBase, 8) + 2 * Offset;
 
-	FNameEntryHeader = Proc->ReadMemoryByte((LPVOID)NameAddr, 2);
-	bisWide = FNameEntryHeader & 1;
-	if (bisWide == 0)
-		Len = FNameEntryHeader >> 6;
-	else
-		Len = (FNameEntryHeader >> 6) * 2;
-	char* tmp = new char[Len + 1]{ '\0', };
-	for (int j = 0; j != Len; j++) {
-		char temp = (BYTE)Proc->ReadMemoryByte((LPVOID)((DWORD64)NameAddr + 2 + j), 1);
-		memcpy(tmp + j, &temp, 1);
+	AActorArray::AActorArray(Process* Proc, DWORD64 ObjectAddress, DWORD64 FNamePoolAddr, PVOID GWorld) : UOArray::GUObjectArray(Proc, ObjectAddress, FNamePoolAddr) {
+		this->Proc = Proc;
+		AActors = GetAActors(GWorld);
+		for (int i = 0; i != 100; i++) {
+			if ( GetActorNameList(AActors, i) )
+				break;
+		}		
 	}
-	/*printf("\t%s",tmp);*/
-	fout << "\t\t" << tmp;
-	delete[] tmp;
-}
 
-void GUObjectArray::MakeName(DWORD64 ID, DWORD64 idx, LPWSTR** list) {
-	DWORD64 Block, Offset, PoolBase, NameAddr, Len = 0;
-	DWORD FNameEntryHeader = 0;
-	bool bisWide = 0;
-
-	if (ID == 0)
-		return;
-
-	Block = ID >> 16;
-	Offset = ID & 65535;
-	PoolBase = FNamePoolAddr + 0x10 + Block * 8;
-	NameAddr = Proc->ReadMemoryByte((LPVOID)PoolBase, 8) + 2 * Offset;
-
-	FNameEntryHeader = Proc->ReadMemoryByte((LPVOID)NameAddr, 2);
-	bisWide = FNameEntryHeader & 1;
-	if (bisWide == 0)
-		Len = FNameEntryHeader >> 6;
-	else
-		Len = (FNameEntryHeader >> 6) * 2;
-	list[idx] = new LPWSTR[Len + 1]{ 0, };
-	char* tmp = new char[Len + 1]{ '\0', };
-	for (int j = 0; j != Len; j++) {
-		char temp = (BYTE)Proc->ReadMemoryByte((LPVOID)((DWORD64)NameAddr + 2 + j), 1);
-		memcpy(tmp + j, &temp, 1);
+	PVOID AActorArray ::GetAActors(PVOID GWorld) {
+		PVOID UWorld = (PVOID)Proc->ReadMemoryByte(GWorld, 8);
+		PVOID PLevel = (PVOID)Proc->ReadMemoryByte((PVOID)((DWORD64)UWorld + 0x30),8);
+		return (PVOID)Proc->ReadMemoryByte((PVOID)((DWORD64)PLevel + 0x98), 8);
 	}
-	if (tmp == NULL)
-		memcpy(tmp, "", Len + 1);
-	fout << tmp << "\t";
-	memcpy(list[idx], tmp, Len + 1);
-	delete[] tmp;
+
+	PVOID AActorArray::GetActorNameList(PVOID AActors,INT64 idx) {
+		DWORD64 BasePointer = Proc->ReadMemoryByte( (PVOID)((DWORD64)AActors + idx*8 ),8 );
+		if (BasePointer) {
+
+
+			//Make AActor Struct
+			AActor tActor;
+			tActor.baseclass.ClassPrivate = (UObjectBase*)Proc->ReadMemoryByte((PVOID)(BasePointer + 0x10), 8);
+			tActor.baseclass.OuterPrivate = (UObjectBase*)Proc->ReadMemoryByte((PVOID)(BasePointer + 0x20), 8);
+			tActor.baseclass.NamePrivate = Proc->ReadMemoryByte((PVOID)(BasePointer + 0x18), 8);
+			tActor.baseclass.ClassPrivateidx = Proc->ReadMemoryByte((PVOID)((DWORD64)tActor.baseclass.ClassPrivate + 0x18), 8);
+			tActor.baseclass.OuterPrivateidx = Proc->ReadMemoryByte((PVOID)((DWORD64)tActor.baseclass.OuterPrivate + 0x18), 8);
+
+			MakeName(tActor.baseclass.ClassPrivateidx);
+			MakeName(tActor.baseclass.OuterPrivateidx);
+			MakeName(tActor.baseclass.NamePrivate);
+			cout << endl;
+			//Make AActor->RootComponent Struct
+			USceneComponent RootComponent;
+			DWORD64 RootComponentBase = Proc->ReadMemoryByte((PVOID)((DWORD64)BasePointer + 0x130), 8);
+			if (RootComponentBase) {
+				RootComponent.baseclass.ClassPrivate = (UObjectBase*)Proc->ReadMemoryByte((PVOID)(RootComponentBase + 0x10), 8);
+				RootComponent.baseclass.OuterPrivate = (UObjectBase*)Proc->ReadMemoryByte((PVOID)(RootComponentBase + 0x20), 8);
+				RootComponent.baseclass.NamePrivate = Proc->ReadMemoryByte((PVOID)(RootComponentBase + 0x18), 8);
+				RootComponent.baseclass.ClassPrivateidx = Proc->ReadMemoryByte((PVOID)((DWORD64)RootComponent.baseclass.ClassPrivate + 0x18), 8);
+				RootComponent.baseclass.OuterPrivateidx = Proc->ReadMemoryByte((PVOID)((DWORD64)RootComponent.baseclass.OuterPrivate + 0x18), 8);
+				cout << "RootComponent : ";
+				MakeName(RootComponent.baseclass.ClassPrivateidx);
+				MakeName(RootComponent.baseclass.OuterPrivateidx);
+				MakeName(RootComponent.baseclass.NamePrivate);
+				cout << endl;
+			}
+			return 0;
+		}
+		else
+			return (PVOID) 1;		
+	}
 }

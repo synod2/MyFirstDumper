@@ -23,9 +23,9 @@ int main() {
 	GWorld.GetObjectAddress(4);
 	printf("GWorld : %016llX\n", GWorld.ObjectAddress);
 	
-	GUObjectArray objr = GUObjectArray(&newProc, GUObject.ObjectAddress, FNamePool.ObjectAddress);
-	objr.MakeObjArray(GObjBase);
-	//objr.GetFName(GObjBase);
-	/*FNamePool.ObjectAddress = FNamePool.OffsetAddress + 4 + newProc.ReadMemoryByte((LPCVOID)FNamePool.OffsetAddress, 4);*/
-
+	UOArray::GUObjectArray objr = UOArray::GUObjectArray(&newProc, GUObject.ObjectAddress, FNamePool.ObjectAddress);
+	/*objr.MakeObjArray(GObjBase);
+	objr.GetFName(GObjBase);*/
+	AArray::AActorArray uoar = AArray::AActorArray(&newProc, GUObject.ObjectAddress, FNamePool.ObjectAddress, (PVOID)GWorld.ObjectAddress);	
+		
 }
